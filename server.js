@@ -3,6 +3,10 @@ import express from "express";
 const app = express();
 const PORT = 3000;
 
+app.set("view engine", "ejs");
+app.set("views", "views");
+
+
 app.get("/", (req, res) => {
   res.send("Hello, web!");
 });
@@ -67,6 +71,10 @@ app.get("/projects", (req, res) => {
   }
   res.json(filteredProjects);
 });
+
+app.get("/about", (req, res) => {
+  res.render("about", { title: "About" });
+})
 
 app.use((req, res) => {
   res.send("Error");
